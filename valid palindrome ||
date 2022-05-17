@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool rec(string s,int i, int j, int c){
+        while(i<j)
+        {
+            
+            if(s[i]!=s[j])
+            {
+            if(c) return false;
+            
+            return rec(s,i+1,j,c+1) || rec(s,i,j-1,c+1);
+                
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+    bool validPalindrome(string s) 
+    {    
+       return rec(s,0,s.length()-1,0);
+    }
+};
