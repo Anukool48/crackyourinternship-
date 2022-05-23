@@ -1,0 +1,51 @@
+class Solution {
+public:
+   string reverseWords(string s) {
+        
+        vector<string> vec;
+        
+        int i=0;
+        //for starting space
+        for(i=0;i<s.length();i++)
+        {
+            if(s[i]!=' ')
+            {
+                break;
+            }
+        }
+        
+        string str="";
+        int flag=0;
+        for(int j=i;j<s.length();j++)
+        {
+            if(s[j]!=' ')
+            {
+                str+=s[j];
+                flag=0;
+            }
+            else if(s[j]==' ' && flag==0)
+            {
+                vec.push_back(str);
+                str="";
+                flag=1;
+            }
+        }
+        if(str.length()!=0)
+        {
+            vec.push_back(str);
+        }
+        
+        reverse(vec.begin(),vec.end());
+        string ans = "";
+        for(i=0;i<vec.size();i++)
+        {
+            ans+=vec[i];
+            if(i!=vec.size()-1)
+            {
+                ans+=" ";
+            }
+            
+        }
+        return ans;
+    }
+};
